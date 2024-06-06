@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Update Purchase</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+  <% if (searchResult && searchResult.length > 0) { %>
+   <h2 class="mt-4">Search Results:</h2>
+   <% for (let i = 0; i < searchResult.length; i++) { %>
+     <div class="search-result">
+       <p><strong>Sale  ID:</strong> <%= searchResult[i].sale_id %></p>
+       <p><strong>Sale Date:</strong> <%= searchResult[i].sale_date %></p>
+       <p><strong>Cust ID:</strong> <%= searchResult[i].cust_id %></p>
+       <p><strong>Prod ID:</strong> <%= searchResult[i].prod_id %></p>
+       <p><strong>Brand name:</strong> <%= searchResult[i].brand_name %></p>
+       <p><strong>Product Name:</strong> <%= searchResult[i].prod_name %></p>
+       <p><strong>Product variant:</strong> <%= searchResult[i].prod_variant %></p>
+       <p><strong>Sale Quantity:</strong> <%= searchResult[i].sale_quantity %></p>
+       <p><strong>Product MRP:</strong> <%= searchResult[i].mrp %></p>
+       <p><strong>Total Price:</strong> <%= searchResult[i].total_price %></p>
+       <h1 class="text-center mb-4">Update Purchase</h1>
+       <form action="/update-sale/<%= searchResult[i].sale_id %>" method="post">
+         <div class="form-group">
+           <label for="sale_id">Sale id</label>
+           <input type="number" name="sale_id" id="sale_id" class="form-control" value="<%= searchResult[i].sale_id %>">
+         </div>
+         <div class="form-group">
+           <label for="sale_date">Sale date</label>
+           <input type="number" name="sale_date" id="sale_date" class="form-control" value="<%= searchResult[i].sale_date %>">
+         </div>
+         <div class="form-group">
+       <label for="cust_id">cust ID:</label>
+       <input type="number" name="cust_id" id="cust_id" class="form-control" value="<%= searchResult[i].cust_id %>" required>
+       <small id="prodDetails" class="form-text text-muted"></small>
+     </div>
+     <div class="form-group">
+       <label for="prod_id">prod_id:</label>
+       <input type="text" name="brand_name" id="prod_id" class="form-control" value="<%= searchResult[i].prod_id %>" required>
+     </div>
+     <div class="form-group">
+       <label for="brand_name">Brand Name:</label>
+       <input type="text" name="brand_name" id="brand_name" class="form-control" value="<%= searchResult[i].brand_name %>" required>
+     </div>
+     <div class="form-group">
+       <label for="prod_name">Product Name:</label>
+       <input type="text" name="prod_name" id="prod_name" class="form-control" value="<%= searchResult[i].prod_name %>" required>
+     </div>
+     <div class="form-group">
+       <label for="prod_variant">Product Variant:</label>
+       <input type="text" name="prod_variant" id="prod_variant" class="form-control" value="<%= searchResult[i].prod_variant %>" required>
+     </div>
+     <div class="form-group">
+       <label for="sale_quantity">sale_quantity:</label>
+       <input type="text" name="sale_quantity" id="sale_quantity" class="form-control" value="<%= searchResult[i].sale_quantity %>" required>
+     </div>
+
+     <div class="form-group">
+       <label for="mrp">Product MRP:</label>
+       <input type="number" name="mrp" id="mrp" class="form-control" value="<%= searchResult[i].mrp %>" required>
+     </div>
+     <div class="form-group">
+       <label for="total_price">total price:</label>
+       <input type="number" name="total_price" id="total_price" class="form-control" value="<%= searchResult[i].total_price %>" required>
+     </div>
+         <button type="submit" class="btn btn-primary">Update</button>
+       </form>
+
+       <!-- <a class="btn btn-primary" href="/update-purchase/<%= parseInt(searchResult[i].purchase_id) %>">Update</a> -->
+
+     </div>
+
+   <% } %>
+ <% } else if (searchResult && searchResult.length === 0) { %>
+   <p>No results found.</p>
+ <% } %>
+
+</div>
+
+
+<script>
+  const prodIdInput = document.getElementById('prod_id');
+  const brandNameInput = document.getElementById('brand_name');
+  const prodNameInput = document.getElementById('prod_name');
+  // const prodCatInput = document.getElementById('prod_cat');
+  const prodVariantInput = document.getElementById('prod_variant');
+  const productMrpInput = document.getElementById('mrp');
+
+  prodIdInput.addEventListener('input', fetchProductDetails);
+
+  function fetchProductDetails() {
+    const prodId = prodIdInput.value;
+
+    fetch(`/get-product-details/${prodId}`)
+      .then(response => response.json())
+      .then(data => {
+        if (data) {
+          brandNameInput.value = data.brand_name;
+          prodNameInput.value = data.prod_name;
+          // prodCatInput.value = data.prod_cat;
+          prodVariantInput.value = data.prod_variant;
+          productMrpInput.value = data.mrp;
+
+          document.getElementById('prodDetails').textContent = `Details: Brand: ${data.brand_name}, Name: ${data.prod_name}, Variant: ${data.prod_variant}, Price: ${data.mrp}`;
+        } else {
+          brandNameInput.value = '';
+          prodNameInput.value = '';
+
+          prodVariantInput.value = '';
+          productMrpInput.value = '';
+
+          document.getElementById('prodDetails').textContent = 'Product details not found.';
+        }
+      })
+      .catch(error => {
+        console.error('Error fetching product details:', error);
+      });
+  }
+</script>
+</body>
+</html>

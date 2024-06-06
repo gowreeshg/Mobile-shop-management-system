@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ADD PRODUCT</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <!-- <link rel="stylesheet" href="css/forms.css"> -->
+  <link rel="stylesheet" href="css/style.css">
+
+</head>
+<body>
+  <div class="jumbotron">
+    <div class="container">
+      <div class="form-header">
+        <h2>ADD PRODUCT</h2>
+      </div>
+      <form action="/adm_addprod" method="post">
+        <div class="form-fieldset">
+          <fieldset>
+            <!-- <legend>Row 1</legend> -->
+            <div class="form-row">
+              <div class="col-md">
+                <label for="field1">PRODUCT ID:</label>
+                <input type="text" id="field1" class="form-control" placeholder="Enter Field 1" name="prod_id">
+              </div>
+              <div class="col-md">
+    <label for="field2">PROCUCT CATEGORY</label>
+    <select id="field2" class="form-control" name="prod_cat">
+      <option value="">SELECT PRODUCT CATEGORY</option>
+      <option value="SMARTPHONE">SMARTPHONE</option>
+      <option value="HEADPHONE/EARPHONE">HEADPHONE/EARPHONE</option>
+      <option value="option3">Option 3</option>
+    </select>
+  </div>
+
+            </div>
+          </fieldset>
+          <fieldset>
+            <!-- <legend>Row 2</legend> -->
+            <div class="form-row">
+              <div class="col-md">
+                <label for="field3">BRAND NAME:</label>
+                <input type="text" id="field3" class="form-control" placeholder="Enter Field 3" name="brand_name">
+              </div>
+              <div class="col-md">
+                <label for="field4">PRODUCT NAME</label>
+                <input type="text" id="field4" class="form-control" placeholder="Enter Field 4" name="prod_name">
+              </div>
+            </div>
+          </fieldset>
+          <fieldset>
+            <!-- <legend>Row 3</legend> -->
+            <div class="form-row">
+              <div class="col-md">
+                <label for="field4">PRODUCT VARIANT</label>
+                <input type="text" id="field4" class="form-control" placeholder="Enter Field 4" name="prod_variant">
+              </div>
+              <div class="col-md">
+                <label for="field5">MRP</label>
+                <input type="text" id="field5" class="form-control" placeholder="Enter Field 5" name="mrp">
+              </div>
+              <div class="col-md">
+                <label for="field6">PRODUCT QUANTITY</label>
+                <input type="text" id="field6" class="form-control" placeholder="Enter Field 6" name="prod_quantity">
+              </div>
+            </div>
+          </fieldset>
+        </div>
+        <div class="form-row">
+          <div class="col">
+            <button type="submit" class="btn btn-primary">ADD PRODUCT</button>
+          </div>
+
+        </div>
+
+        <% if (data === 1) { %>
+           <h3>Product added successfully</h3>
+         <% } else if (data === 0) { %>
+           <h3>Error in adding product. Try again or contact your developer.</h3>
+         <% } %>
+        
+      </form>
+    </div>
+  </div>
+</body>
+</html>

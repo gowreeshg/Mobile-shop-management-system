@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>View Customer</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="viewprod_styles.css">
+</head>
+
+<body>
+  <h1>View Customerss</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Customer name</th>
+        <th>Customer Phone</th>
+        <th>Customer Address</th>
+        <th>Customer Gender</th>
+        <th>Customer Age</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% customers.forEach((customer) => { %>
+        <tr>
+          <td><%= customer.cust_id %></td>
+          <td><%= customer.cust_name %></td>
+          <td><%= customer.cust_phone %></td>
+          <td><%= customer.cust_address %></td>
+          <td><%= customer.cust_gender %></td>
+          <td><%= customer.cust_age %></td>
+        </tr>
+      <% }); %>
+    </tbody>
+  </table>
+</body>
+</html>

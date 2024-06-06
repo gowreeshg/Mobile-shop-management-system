@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Search Purchase</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+  <style>
+    /* Additional custom styles */
+    body {
+      font-family: Arial, sans-serif;
+    }
+    .container {
+      margin-top: 50px;
+    }
+    .search-result {
+      border: 1px solid #ddd;
+      padding: 10px;
+      margin-top: 10px;
+      background-color: #f5f5f5;
+    }
+  </style>
+
+</head>
+<body>
+  <div class="container">
+    <h1 class="text-center mb-4">Search Purchase</h1>
+    <form action="/search-purchase" method="post" class="mb-4">
+      <div class="form-group">
+        <label for="searchOption">Search Option:</label>
+        <select class="form-control" id="searchOption" name="search_option">
+          <option value="purchase_id">Purchase ID</option>
+          <option value="brand_name_prod_name">Brand and Product Name</option>
+        </select>
+      </div>
+      <div class="form-group" id="purchaseIdGroup">
+        <label for="purchaseId">Purchase ID:</label>
+        <input type="text" name="purchase_id" id="purchaseId" class="form-control">
+      </div>
+      <div class="form-group" id="brandProdGroup" style="display: none;">
+        <label for="brandName">Brand Name:</label>
+        <input type="text" name="brand_name" id="brandName" class="form-control">
+        <label for="productName">Product Name:</label>
+        <input type="text" name="prod_name" id="productName" class="form-control">
+      </div>
+      <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+
+    <script>
+      document.getElementById('searchOption').addEventListener('change', function() {
+        const selectedOption = this.value;
+        const purchaseIdGroup = document.getElementById('purchaseIdGroup');
+        const brandProdGroup = document.getElementById('brandProdGroup');
+
+        if (selectedOption === 'purchase_id') {
+          purchaseIdGroup.style.display = 'block';
+          brandProdGroup.style.display = 'none';
+        } else if (selectedOption === 'brand_name_prod_name') {
+          purchaseIdGroup.style.display = 'none';
+          brandProdGroup.style.display = 'block';
+        }
+      });
+
+      function showUpdateForm(purchaseId) {
+        window.location.href = `/update-purchase/${purchaseId}`;
+      }
+    </script>
+  </div>
+</body>
+</html>

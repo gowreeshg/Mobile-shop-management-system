@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  	<title>Employee dashboard</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+
+		<div class="container d-md-flex align-items-stretch">
+      <!-- Page Content  -->
+      <div id="content" class="p-4 p-md-5 pt-5">
+        <h2 class="mb-4">EMPLOYEE</h2>
+        <h3>Product Search</h3>
+
+        <form action="/prod-search" method="GET" class="mb-4">
+          <div class="form-group">
+            <label for="searchType">Search by:</label>
+            <select class="form-control" id="searchType" name="searchType">
+              <option value="prod_id">Product ID</option>
+              <option value="brand_prod">Brand Name + Product Name</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="searchInput">Search Query:</label>
+            <input type="text" class="form-control" id="searchInput" name="searchInput" placeholder="Search here" required>
+          </div>
+
+          <button type="submit" class="btn btn-primary">Search</button>
+        </form>
+        <h3>Low Quantity Products:</h3>
+        <% if (lowQuantityProducts.length > 0) { %>
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Product ID</th>
+                <th>Product Category</th>
+                <th>Brand Name</th>
+                <th>Product Name</th>
+                <th>Product Variant</th>
+                <th>MRP</th>
+                <th>Quantity</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% lowQuantityProducts.forEach(product => { %>
+                <tr>
+                  <td><%= product.prod_id %></td>
+                  <td><%= product.prod_cat %></td>
+                  <td><%= product.brand_name %></td>
+                  <td><%= product.prod_name %></td>
+                  <td><%= product.prod_variant %></td>
+                  <td><%= product.mrp %></td>
+                  <td><%= product.prod_quantity %></td>
+                </tr>
+              <% }); %>
+            </tbody>
+          </table>
+        <% } else { %>
+          <p>No low quantity products found.</p>
+        <% } %>
+      </div>
+
+      <nav id="sidebar">
+				<div class="p-4 pt-5">
+					<h5>Welcome, <%= username %>!</h5>
+          <div class="mb-5">
+          <h4>  <a href="/logout">Logout</a></h4>
+
+            <!-- <form action="#" class="subscribe-form">
+              <div class="form-group d-flex">
+                <div class="icon"><span class="icon-paper-plane"></span></div>
+                <input type="text" class="form-control" placeholder="Enter Email Address">
+              </div>
+            </form> -->
+          </div>
+	        <ul class="list-unstyled components mb-5">
+
+            <li>
+	            <a href="#pageSubmenu2" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">PRODUCT</a>
+	            <ul class="collapse list-unstyled" id="pageSubmenu2">
+                <li><a href="emp_addprod"><span class="fa fa-chevron-right mr-2"></span> ADD PRODUCT</a></li>
+                <li><a href="emp_view_products"><span class="fa fa-chevron-right mr-2"></span> VIEW PRODUCT</a></li>
+	            </ul>
+	          </li>
+            <li>
+             <a href="#pageSubmenu4" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">PURCHASE</a>
+             <ul class="collapse list-unstyled" id="pageSubmenu4">
+                <li><a href="emp_addpurchase"><span class="fa fa-chevron-right mr-2"></span> ADD PURCHASE</a></li>
+                <li><a href="emp_view_purchase"><span class="fa fa-chevron-right mr-2"></span> VIEW PURCHASE</a></li>
+             </ul>
+           </li>
+
+
+	          <li>
+	            <a href="#pageSubmenu3" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">SALES</a>
+	            <ul class="collapse list-unstyled" id="pageSubmenu3">
+                <li><a href="emp_addsales"><span class="fa fa-chevron-right mr-2"></span> ADD SALES</a></li>
+                <li><a href="#"><span class="fa fa-chevron-right mr-2"></span> VIEW SALES</a></li>
+	            </ul>
+	          </li>
+            <li>
+             <a href="#pageSubmenu5" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">CUSTOMER</a>
+             <ul class="collapse list-unstyled" id="pageSubmenu5">
+                <li><a href="emp_addcust"><span class="fa fa-chevron-right mr-2"></span> ADD CUSTOMER</a></li>
+                <li><a href="#"><span class="fa fa-chevron-right mr-2"></span> UPDATE CUSTOMER</a></li>
+             </ul>
+           </li>
+
+	        </ul>
+					<div class="mb-5">
+						<h5>VIEW REPORTS</h5>
+            <div class="tagcloud">
+              <a href="sales-report" class="tag-cloud-link">SALES REPORT</a>
+              <!-- <a href="#" class="tag-cloud-link">SALARY REPORT</a> -->
+
+            </div>
+					</div>
+
+	      </div>
+    	</nav>
+		</div>
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/popper.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>

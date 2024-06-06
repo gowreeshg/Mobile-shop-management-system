@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Simple Form</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/forms.css">
+</head>
+<body>
+  <div class="jumbotron">
+    <div class="container">
+      <div class="form-header">
+        <h2>ADD PURCHASE</h2>
+      </div>
+      <form action="/emp_addpurchase" method="post">
+        <div class="form-fieldset">
+          <fieldset>
+            <!-- <legend>Row 1</legend> -->
+            <div class="form-row">
+              <div class="col-md">
+                <label for="field1">PURCHASE ID:</label>
+                <input type="text" id="field1" class="form-control" placeholder="Enter Field 1" name="purchase_id ">
+              </div>
+              <div class="col-md">
+                <label for="prod_id">PRODUCT ID:</label>
+                <input type="text" id="prod_id" class="form-control" placeholder="Enter Field 2" name="prod_id">
+              </div>
+            </div>
+          </fieldset>
+          <fieldset>
+            <!-- <legend>Row 2</legend> -->
+            <div class="form-row">
+              <div class="col-md">
+                <label for="brand_name">BRAND_NAME:</label>
+                <input type="text" id="brand_name" class="form-control" placeholder="Enter Field 3" name="brand_name">
+              </div>
+              <div class="col-md">
+                <label for="prod_name">PRODUCT_NAME:</label>
+                <input type="text" id="prod_name" class="form-control" placeholder="Enter Field 4" name="prod_name">
+              </div>
+            </div>
+          </fieldset>
+          <fieldset>
+            <!-- <legend>Row 3</legend> -->
+            <div class="form-row">
+              <div class="col-md">
+                <label for="prod_cat">PRODUCT CATEGORY:</label>
+                <input type="text" id="prod_cat" class="form-control" placeholder="Enter Field 5" name="prod_cat">
+              </div>
+              <div class="col-md">
+                <label for="field6">PRODUCT VARIANT</label>
+                <input type="text" id="field6" class="form-control" placeholder="Enter Field 6" name="prod_variant">
+              </div>
+            </div>
+          </fieldset>
+          <fieldset>
+            <!-- <legend>Row 4</legend> -->
+            <div class="form-row">
+              <div class="col-md">
+                <label for="field7">PURCHASE PRICE</label>
+                <input type="text" id="field7" class="form-control" placeholder="Enter Field 7" name="purchase_price">
+              </div>
+              <div class="col-md">
+                <label for="field8">PURCHASE QUANTITY</label>
+                <input type="text" id="field8" class="form-control" placeholder="Enter Field 8" name="purchase_quantity">
+              </div>
+            </div>
+          </fieldset>
+          <fieldset>
+            <!-- <legend>Row 5</legend> -->
+            <div class="form-row">
+              <div class="col-md">
+                <!-- <label for="field9">PURCHASE DATE:</label>
+                <input type="date" id="field9" class="form-control" pattern="\d{4}-\d{2}-\d{2}" placeholder="yyyy-mm-dd" name="purchase_date"> -->
+                <label for="purchaseDate">Purchase Date:</label>
+  <input type="date" id="purchaseDate" class="form-control" name="purchase_date" required>
+              </div>
+              <div class="col-md">
+                <label for="field10">PRODUCT MRP</label>
+                <input type="text" id="field10" class="form-control" placeholder="Enter Field 10" name="product_mrp">
+              </div>
+            </div>
+          </fieldset>
+          <fieldset>
+            <!-- <legend>Row 5</legend> -->
+            <div class="form-row">
+              <div class="col-md">
+                <label for="field11">TOTAL PURCHASE PRICE</label>
+                <input type="text" id="field11" class="form-control" placeholder="Enter Field 11" name="total_purchase_price">
+              </div>
+            </fieldset>
+
+
+        </div>
+        <div class="form-row">
+          <div class="col">
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+  const productIdInput = document.getElementById('prod_id');
+  const productNameInput = document.getElementById('prod_name');
+  const brandNameInput = document.getElementById('brand_name');
+  const productCategoryInput = document.getElementById('prod_cat');
+  const productVariantInput = document.getElementById('prod_variant');
+
+  productIdInput.addEventListener('change', () => {
+    // Fetch the product details based on the selected product ID
+    fetch(`/products/${productIdInput.value}`)
+      .then(response => response.json())
+      .then(data => {
+        // Populate the product name and brand name fields
+        productNameInput.value = data.prod_name;
+        brandNameInput.value = data.brand_name;
+        productCategoryInput.value = data.prod_cat;
+        productVariantInput.value = data.prod_variant;
+      })
+      .catch(error => {
+        console.error('Error fetching product details:', error);
+      });
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!-- employee_search.ejs -->
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Search Employee</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+  <div class="container mt-5">
+    <h2>Search Employee</h2>
+    <form action="/employee_details" method="GET">
+      <div class="form-group">
+        <label for="emp_id">Employee ID:</label>
+        <input type="text" class="form-control" id="emp_id" name="emp_id" required>
+      </div>
+      <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+  </div>
+</body>
+</html>

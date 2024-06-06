@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Search Results</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+  <div class="container">
+    <h1 class="text-center mb-4">Search Results</h1>
+
+    <% if (searchResult && searchResult.length > 0) { %>
+      <% for (let i = 0; i < searchResult.length; i++) { %>
+        <form action="/update-sale/<%= searchResult[i].sale_id %>" method="post">
+          <div class="form-group">
+            <label for="saleId">Sale ID:</label>
+            <input type="text" name="sale_id" id="saleId" class="form-control" value="<%= searchResult[i].sale_id %>" readonly>
+          </div>
+          <div class="form-group">
+            <label for="saleDate">Sale Date:</label>
+            <input type="date" name="sale_date" id="saleDate" class="form-control" value="<%= searchResult[i].sale_date %>">
+          </div>
+          <div class="form-group">
+            <label for="custId">Customer ID:</label>
+            <input type="text" name="cust_id" id="custId" class="form-control" value="<%= searchResult[i].cust_id %>" readonly>
+          </div>
+          <div class="form-group">
+            <label for="prodId">Product ID:</label>
+            <input type="text" name="prod_id" id="prodId" class="form-control" value="<%= searchResult[i].prod_id %>" readonly>
+          </div>
+          <div class="form-group">
+            <label for="brandName">Brand Name:</label>
+            <input type="text" name="brand_name" id="brandName" class="form-control" value="<%= searchResult[i].brand_name %>" readonly>
+          </div>
+          <div class="form-group">
+            <label for="prodName">Product Name:</label>
+            <input type="text" name="prod_name" id="prodName" class="form-control" value="<%= searchResult[i].prod_name %>" readonly>
+          </div>
+          <div class="form-group">
+            <label for="prodVariant">Product Variant:</label>
+            <input type="text" name="prod_variant" id="prodVariant" class="form-control" value="<%= searchResult[i].prod_variant %>" readonly>
+          </div>
+          <div class="form-group">
+            <label for="saleQuantity">Sale Quantity:</label>
+            <input type="number" name="sale_quantity" id="saleQuantity" class="form-control" value="<%= searchResult[i].sale_quantity %>">
+          </div>
+          <div class="form-group">
+            <label for="mrp">MRP:</label>
+            <input type="number" name="mrp" id="mrp" class="form-control" value="<%= searchResult[i].mrp %>">
+          </div>
+          <div class="form-group">
+            <label for="totalPrice">Total Price:</label>
+            <input type="number" name="total_price" id="totalPrice" class="form-control" value="<%= searchResult[i].total_price %>">
+          </div>
+          <button type="submit" class="btn btn-primary">Update</button>
+        </form>
+      <% } %>
+    <% } else if (searchResult && searchResult.length === 0) { %>
+      <p>No results found.</p>
+    <% } %>
+  </div>
+</body>
+</html>

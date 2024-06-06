@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Invoice</title>
+  <style>
+    /* Add your custom styles for the invoice here */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    .invoice-container {
+      width: 80%;
+      margin: auto;
+      padding: 20px;
+    }
+    .invoice-header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .invoice-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    .invoice-table th, .invoice-table td {
+      border: 1px solid #000;
+      padding: 8px;
+    }
+    .invoice-total {
+      margin-top: 20px;
+      text-align: right;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 class="text-center mb-4">Search Sales</h1>
+    <form action="/search-sale-invoice" method="post" class="mb-4">
+      <div class="form-group">
+        <label for="searchOption">Search Option:</label>
+        <select class="form-control" id="searchOption" name="search_option">
+          <option value="sale_id">Sale ID</option>
+          <option value="brand_name_prod_name">Brand and Product Name</option>
+        </select>
+      </div>
+      <div class="form-group" id="saleIdGroup">
+        <label for="saleId">Sale ID:</label>
+        <input type="text" name="sale_id" id="saleId" class="form-control">
+      </div>
+      <div class="form-group" id="brandProdGroup" style="display: none;">
+        <label for="brandName">Brand Name:</label>
+        <input type="text" name="brand_name" id="brandName" class="form-control">
+        <label for="productName">Product Name:</label>
+        <input type="text" name="prod_name" id="productName" class="form-control">
+      </div>
+      <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+
+
+  <div class="invoice-container">
+    <div class="invoice-header">
+      <h1>Invoice</h1>
+      <p>Invoice No: <%= invoiceNo %></p>
+      <p>Invoice Date: <%= saleDate %></p>
+    </div>
+    <div class="customer-details">
+      <h3>Customer Details</h3>
+      <p>Name: <%= customerName %></p>
+      <p>Address: <%= customerAddress %></p>
+    </div>
+    <div class="invoice-details">
+      <h3>Invoice Details</h3>
+      <table class="invoice-table">
+        <thead>
+          <tr>
+            <th>Sale ID</th>
+            <th>Brand Name</th>
+            <th>Product Name</th>
+            <th>Product Variant</th>
+            <th>Sale Quantity</th>
+            <th>MRP</th>
+            <th>Total Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          <%if(invoiceNo!=null) %>
+          <% saleDetails.forEach((item) => { %>
+            <tr>
+               <td><a href="/generate-invoice/<%= item.sale_id %>">Generate Invoice</a></td>
+              <td><%= item.brand_name %></td>
+              <td><%= item.prod_name %></td>
+              <td><%= item.prod_variant %></td>
+              <td><%= item.sale_quantity %></td>
+              <td><%= item.mrp %></td>
+              <td><%= item.total_price %></td>
+            </tr>
+          <% }); %>
+            <% } %>
+        </tbody>
+      </table>
+    </div>
+    <div class="invoice-total">
+      <p>Total: <%= invoiceTotal %></p>
+    </div>
+  </div>
+</body>
+</html>

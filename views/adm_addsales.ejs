@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ADD SALES</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/forms.css">
+</head>
+<body>
+  <div class="jumbotron">
+    <div class="container">
+      <div class="form-header">
+        <h2>ADD SALES</h2>
+      </div>
+      <form action="adm_addsales" method="post">
+        <div class="form-fieldset">
+          <fieldset>
+            <!-- <legend>Row 1</legend> -->
+            <div class="form-row">
+              <div class="col-md">
+                <label for="field1">SALE ID:</label>
+                <input type="text" id="field1" class="form-control" placeholder="Enter Field 1" name="sale_id">
+              </div>
+              <div class="col-md">
+                <label for="saleDate">SALE Date:</label>
+  <input type="date" id="saleDate" class="form-control" name="sale_date" required>
+              </div>
+            </div>
+          </fieldset>
+          <fieldset>
+            <!-- <legend>Row 2</legend> -->
+            <div class="form-row">
+
+              <div class="col-md">
+                <label for="field4">CUSTOMER ID:</label>
+                <input type="text" id="field4" class="form-control" placeholder="Enter Field 4" name="cust_id">
+              </div>
+              <div class="col-md">
+                <label for="prod_id">PRODUCT ID:</label>
+                <input type="text" id="prod_id" class="form-control" placeholder="Enter Field 5" name="prod_id">
+              </div>
+            </div>
+          </fieldset>
+          <fieldset>
+            <!-- <legend>Row 3</legend> -->
+            <div class="form-row">
+
+              <div class="col-md">
+                <label for="brand_name">BRAND NAME:</label>
+                <input type="text" id="brand_name" class="form-control" placeholder="Enter Field 6" name="brand_name">
+              </div>
+              <div class="col-md">
+                <label for="prod_name">PRODUCT NAME</label>
+                <input type="text" id="prod_name" class="form-control" placeholder="Enter Field 6" name="prod_name">
+              </div>
+            </div>
+          </fieldset>
+          <fieldset>
+            <!-- <legend>Row 4</legend> -->
+            <div class="form-row">
+              <div class="col-md">
+                <label for="prod_variant">PRODUCT VARIANT</label>
+                <input type="text" id="prod_variant" class="form-control" placeholder="Enter Field 7" name="prod_variant">
+              </div>
+              <div class="col-md">
+                <label for="field8">SALE QUANTITY:</label>
+                <input type="text" id="field8" class="form-control" placeholder="Enter Field 8" name="sale_quantity">
+              </div>
+            </div>
+          </fieldset>
+          <!-- <fieldset>
+            <div class="form-row">
+              <div class="col-md">
+                <label for="field9">TAX PERCENTAGE:</label>
+                <input type="text" id="field9" class="form-control" placeholder="Enter Field 9">
+              </div>
+              <div class="col-md">
+                <label for="field10">PRICE BEFORE TAX</label>
+                <input type="text" id="field10" class="form-control" placeholder="Enter Field 10">
+              </div>
+            </div>
+          </fieldset> -->
+          <fieldset>
+            <!-- <legend>Row 6</legend> -->
+            <div class="form-row">
+              <div class="col-md">
+                <label for="field11">MRP</label>
+                <input type="text" id="mrp" class="form-control" placeholder="Enter Field 11" name="mrp">
+              </div>
+              <div class="col-md">
+                <label for="field12">TOTAL PRICE:</label>
+                <input type="text" id="field12" class="form-control" placeholder="Enter Field 12" name="total_price">
+              </div>
+            </div>
+          </fieldset>
+        </div>
+        <div class="form-row">
+          <div class="col">
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
+        </div>
+        <% if (data === 1) { %>
+           <h3>Sale added successfully</h3>
+         <% } else if (data === 0) { %>
+           <h3>Error in adding product. Try again or contact your developer.</h3>
+         <% } %>
+      </form>
+    </div>
+  </div>
+
+  <script>
+  const productIdInput = document.getElementById('prod_id');
+  const productNameInput = document.getElementById('prod_name');
+  const brandNameInput = document.getElementById('brand_name');
+  const productVariantInput = document.getElementById('prod_variant');
+  const productMrptInput = document.getElementById('mrp');
+
+
+
+  productIdInput.addEventListener('change', () => {
+    // Fetch the product details based on the selected product ID
+    fetch(`/products/${productIdInput.value}`)
+      .then(response => response.json())
+      .then(data => {
+        // Populate the product name and brand name fields
+        productNameInput.value = data.prod_name;
+        brandNameInput.value = data.brand_name;
+        productVariantInput.value = data.prod_variant;
+        productMrptInput.value = data.mrp;
+      })
+      .catch(error => {
+        console.error('Error fetching product details:', error);
+      });
+  });
+</script>
+
+</body>
+</html>

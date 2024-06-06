@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ADD EMPLOYEE</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/forms.css">
+</head>
+<body>
+  <div class="jumbotron">
+    <div class="container">
+      <div class="form-header">
+        <h2>ADD EMPLOYEE</h2>
+      </div>
+      <form action="/adm_addemp" method="post">
+        <div class="form-fieldset">
+          <fieldset>
+            <!-- <legend>Row 1</legend> -->
+            <div class="form-row">
+              <div class="col-md">
+                <label for="field1">EMPLOYEE ID:</label>
+                <input type="text" id="field1" class="form-control" placeholder="Enter Field 1" name="emp_id">
+              </div>
+              <div class="col-md">
+                <label for="field2">EMPLOYEE NAME:</label>
+                <input type="text" id="field2" class="form-control" placeholder="Enter Field 2" name="emp_name">
+              </div>
+            </div>
+          </fieldset>
+          <fieldset>
+            <!-- <legend>Row 2</legend> -->
+            <div class="form-row">
+              <div class="col-md">
+                <label for="field3">EMPLOYEE ADDRESS:</label>
+                <input type="text" id="field3" class="form-control" placeholder="Enter Field 3" name="emp_address">
+              </div>
+              <div class="col-md">
+                <label for="joinDate">JOIN DATE:</label>
+                  <input type="date" id="joinDate" class="form-control" required name="emp_datejoin">
+              </div>
+              </div>
+            </div>
+          </fieldset>
+          <fieldset>
+            <!-- <legend>Row 3</legend> -->
+            <div class="form-row">
+              <div class="col-md">
+                <label for="field5">EMPLOYEE GENDER</label>
+                <input type="text" id="field5" class="form-control" placeholder="Enter Field 5" name="emp_gender">
+              </div>
+              <div class="col-md">
+                <label for="field6">EMPLOYEE SALARY</label>
+                <input type="text" id="field6" class="form-control" placeholder="Enter Field 5" name="emp_salary">
+              </div>
+            </div>
+          </fieldset>
+          <fieldset>
+            <!-- <legend>Row 3</legend> -->
+            <div class="form-row">
+
+              <div class="col-md">
+                <label for="dob">DOB:</label>
+                  <input type="date" id="dob" class="form-control" required name="emp_dob">
+              </div>
+            </div>
+          </fieldset>
+          <fieldset>
+            <!-- <legend>Row 3</legend> -->
+            <div class="form-row">
+              <div class="col-md">
+                <label for="field5">EMPLOYEE PHONE</label>
+                <input type="text" id="field5" class="form-control" placeholder="Enter Field 5" name="emp_phone">
+              </div>
+                </fieldset>
+        </div>
+        <div class="form-row">
+          <div class="col">
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</body>
+</html>

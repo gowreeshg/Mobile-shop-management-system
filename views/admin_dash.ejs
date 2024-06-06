@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>Admin dashboard</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+  .search-form {
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+  }
+</style>
+</head>
+
+<body>
+  <div class="container-fluid">
+  <div class="row">
+    <div class="col-md-9">
+      <div class="container d-md-flex align-items-stretch">
+        <!-- Page Content  -->
+        <div id="content" class="p-4 p-md-5 pt-5">
+          <h2 class="mb-4">ADMIN</h2>
+          <!-- <h4>Products with Quantity < 10:</h4>
+
+    <
+          <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis
+            aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis
+            aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p> -->
+            <!-- <div class="container mt-5"> -->
+              <h3>Product Search</h3>
+
+              <form action="/prod-search" method="GET" class="mb-4">
+                <div class="form-group">
+                  <label for="searchType">Search by:</label>
+                  <select class="form-control" id="searchType" name="searchType">
+                    <option value="prod_id">Product ID</option>
+                    <option value="brand_prod">Brand Name + Product Name</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label for="searchInput">Search Query:</label>
+                  <input type="text" class="form-control" id="searchInput" name="searchInput" placeholder="Search here" required>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Search</button>
+              </form>
+
+
+
+      <h3>Low Quantity Products:</h3>
+      <% if (lowQuantityProducts.length > 0) { %>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Product ID</th>
+              <th>Product Category</th>
+              <th>Brand Name</th>
+              <th>Product Name</th>
+              <th>Product Variant</th>
+              <th>MRP</th>
+              <th>Quantity</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% lowQuantityProducts.forEach(product => { %>
+              <tr>
+                <td><%= product.prod_id %></td>
+                <td><%= product.prod_cat %></td>
+                <td><%= product.brand_name %></td>
+                <td><%= product.prod_name %></td>
+                <td><%= product.prod_variant %></td>
+                <td><%= product.mrp %></td>
+                <td><%= product.prod_quantity %></td>
+              </tr>
+            <% }); %>
+          </tbody>
+        </table>
+      <% } else { %>
+        <p>No low quantity products found.</p>
+      <% } %>
+    </div>
+
+            <!-- </div> -->
+        </div>
+    </div>
+
+
+    <div class="col-md-3">
+          <!-- Sidebar goes here -->
+          <nav id="sidebar">
+            <div class="p-4 pt-5">
+              <h5>Welcome, <%= username %>!</h5>
+              <div class="mb-5">
+                <h4> <a href="/logout">Logout</a></h4>
+              </div>
+              <ul class="list-unstyled components mb-5">
+                <li>
+                  <a href="#pageSubmenu2" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">PRODUCT</a>
+                  <ul class="collapse list-unstyled" id="pageSubmenu2">
+                    <li><a href="adm_addprod"><span class="fa fa-chevron-right mr-2"></span> ADD PRODUCT</a></li>
+                    <li><a href="adm_view_products"><span class="fa fa-chevron-right mr-2"></span> VIEW PRODUCT</a></li>
+                  </ul>
+                </li>
+                <li>
+                  <a href="#pageSubmenu4" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">PURCHASE</a>
+                  <ul class="collapse list-unstyled" id="pageSubmenu4">
+                    <li><a href="adm_addpurchase"><span class="fa fa-chevron-right mr-2"></span> ADD PURCHASE</a></li>
+                    <li><a href="search-purchase"><span class="fa fa-chevron-right mr-2"></span> EDIT/UPDATE PURCHASE</a></li>
+                    <li><a href="adm_view_purchase"><span class="fa fa-chevron-right mr-2"></span> VIEW PURCHASE</a></li>
+                  </ul>
+                </li>
+                <!-- <li>
+      	            <a href="#pageSubmenu1" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">STOCK</a>
+      	            <ul class="collapse list-unstyled" id="pageSubmenu1">
+                      <li><a href="#"><span class="fa fa-chevron-right mr-2"></span> ADD STOCK</a></li>
+                      <li><a href="#"><span class="fa fa-chevron-right mr-2"></span> EDIT/UPDATE STOCK</a></li>
+                      <li><a href="#"><span class="fa fa-chevron-right mr-2"></span> VIEW STOCK</a></li>
+      	            </ul>
+      	          </li> -->
+
+                <li>
+                  <a href="#pageSubmenu3" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">SALES</a>
+                  <ul class="collapse list-unstyled" id="pageSubmenu3">
+                    <li><a href="adm_addsales"><span class="fa fa-chevron-right mr-2"></span> ADD SALES</a></li>
+                    <li><a href="search-sale"><span class="fa fa-chevron-right mr-2"></span> EDIT/UPDATE SALES</a></li>
+                    <li><a href="adm_viewsales"><span class="fa fa-chevron-right mr-2"></span> VIEW SALES</a></li>
+                  </ul>
+                </li>
+                <li>
+                  <a href="#pageSubmenu5" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">CUSTOMER</a>
+                  <ul class="collapse list-unstyled" id="pageSubmenu5">
+                    <li><a href="adm_addcust"><span class="fa fa-chevron-right mr-2"></span> ADD CUSTOMER</a></li>
+                    <li><a href="customer_search"><span class="fa fa-chevron-right mr-2"></span> UPDATE CUSTOMER</a></li>
+                    <li><a href="adm_viewcustomer"><span class="fa fa-chevron-right mr-2"></span> VIEW CUSTOMER</a></li>
+
+                  </ul>
+                </li>
+                <li>
+                  <a href="#pageSubmenu6" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">EMPLOYEE</a>
+                  <ul class="collapse list-unstyled" id="pageSubmenu6">
+                    <li><a href="adm_addemp"><span class="fa fa-chevron-right mr-2"></span> ADD EMPLOYEE</a></li>
+                    <li><a href="search_employee"><span class="fa fa-chevron-right mr-2"></span> UPDATE EMPLOYEE</a></li>
+                    <!-- <li><a href="#"><span class="fa fa-chevron-right mr-2"></span> DELETE EMPLOYEE</a></li> -->
+                    <li><a href="adm_viewemployee"><span class="fa fa-chevron-right mr-2"></span> VIEW EMPLOYEE</a></li>
+
+                  </ul>
+                </li>
+              </ul>
+              <div class="mb-5">
+                <h5>VIEW REPORTS</h5>
+                <div class="tagcloud">
+                  <!-- <a href="#" class="tag-cloud-link">EMPLOYEE REPORT</a> -->
+                  <a href="sales-report" class="tag-cloud-link">GENERATE REPORT</a>
+                    <!-- <a href="search-sale-invoice" class="tag-cloud-link">Invoice</a> -->
+                </div>
+              </div>
+              <!-- <div class="mb-5">
+      	        	<h5>Newsletter</h5>
+      						<form action="#" class="subscribe-form">
+      	            <div class="form-group d-flex">
+      	            	<div class="icon"><span class="icon-paper-plane"></span></div>
+      	              <input type="text" class="form-control" placeholder="Enter Email Address">
+      	            </div>
+      	          </form>
+      					</div> -->
+            </div>
+          </nav>
+        </div>
+
+
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+  <script src="js/jquery.min.js"></script>
+  <script src="js/popper.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+
+</html>

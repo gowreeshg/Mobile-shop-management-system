@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>View Products</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="viewprod_styles.css">
+  <!-- <link rel="stylesheet" href="css/style.css"> -->
+
+</head>
+
+<body>
+
+  <h1>View Products</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+          <th>Brand name</th>
+        <th>Product Name</th>
+        <th>Product Category</th>
+        <th>Price</th>
+        <th>Quantity</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% products.forEach((product) => { %>
+ <tr style="background-color: <%= product.prod_quantity < 10 ? '#FF6B6B' : 'white' %>; color: <%= product.prod_quantity < 10 ? 'white' : 'black' %>;">
+          <td><%= product.prod_id %></td>
+          <td><%= product.brand_name %></td>
+          <td><%= product.prod_name %></td>
+          <td><%= product.prod_cat %></td>
+          <td><%= product.mrp %></td>
+          <td><%= product.prod_quantity %></td>
+        </tr>
+      <% }); %>
+    </tbody>
+  </table>
+
+<!-- <nav id="sidebar">
+  <div class="p-4 pt-5">
+    <h5>Welcome, <%= username %>!</h5>
+    <div class="mb-5">
+      <h4> <a href="/logout">Logout</a></h4>
+    </div>
+    <ul class="list-unstyled components mb-5">
+      <li>
+        <a href="#pageSubmenu2" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">PRODUCT</a>
+        <ul class="collapse list-unstyled" id="pageSubmenu2">
+          <li><a href="adm_addprod"><span class="fa fa-chevron-right mr-2"></span> ADD PRODUCT</a></li>
+          <li><a href="adm_view_products"><span class="fa fa-chevron-right mr-2"></span> VIEW PRODUCT</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#pageSubmenu4" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">PURCHASE</a>
+        <ul class="collapse list-unstyled" id="pageSubmenu4">
+          <li><a href="adm_addpurchase"><span class="fa fa-chevron-right mr-2"></span> ADD PURCHASE</a></li>
+          <li><a href="search-purchase"><span class="fa fa-chevron-right mr-2"></span> EDIT/UPDATE PURCHASE</a></li>
+          <li><a href="adm_view_purchase"><span class="fa fa-chevron-right mr-2"></span> VIEW PURCHASE</a></li>
+        </ul>
+      </li>
+
+
+      <li>
+        <a href="#pageSubmenu3" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">SALES</a>
+        <ul class="collapse list-unstyled" id="pageSubmenu3">
+          <li><a href="adm_addsales"><span class="fa fa-chevron-right mr-2"></span> ADD SALES</a></li>
+          <li><a href="search-sale"><span class="fa fa-chevron-right mr-2"></span> EDIT/UPDATE SALES</a></li>
+          <li><a href="adm_viewsales"><span class="fa fa-chevron-right mr-2"></span> VIEW SALES</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#pageSubmenu5" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">CUSTOMER</a>
+        <ul class="collapse list-unstyled" id="pageSubmenu5">
+          <li><a href="adm_addcust"><span class="fa fa-chevron-right mr-2"></span> ADD CUSTOMER</a></li>
+          <li><a href="customer_search"><span class="fa fa-chevron-right mr-2"></span> UPDATE CUSTOMER</a></li>
+          <li><a href="adm_viewcustomer"><span class="fa fa-chevron-right mr-2"></span> VIEW CUSTOMER</a></li>
+
+        </ul>
+      </li>
+      <li>
+        <a href="#pageSubmenu6" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">EMPLOYEE</a>
+        <ul class="collapse list-unstyled" id="pageSubmenu6">
+          <li><a href="adm_addemp"><span class="fa fa-chevron-right mr-2"></span> ADD EMPLOYEE</a></li>
+          <li><a href="search_employee"><span class="fa fa-chevron-right mr-2"></span> UPDATE EMPLOYEE</a></li>
+
+          <li><a href="adm_viewemployee"><span class="fa fa-chevron-right mr-2"></span> VIEW EMPLOYEE</a></li>
+
+        </ul>
+      </li>
+    </ul>
+    <div class="mb-5">
+      <h5>VIEW REPORTS</h5>
+      <div class="tagcloud">
+        <a href="#" class="tag-cloud-link">EMPLOYEE REPORT</a>
+        <a href="#" class="tag-cloud-link">SALES REPORT</a>
+      </div>
+    </div>
+
+  </div>
+</nav>
+</div>
+</div>
+</div> -->
+
+
+</body>
+</html>

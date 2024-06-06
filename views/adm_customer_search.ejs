@@ -1,0 +1,22 @@
+<!-- customer_search.ejs -->
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Search Customer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+  <div class="container mt-5">
+    <h2>Search Customer</h2>
+    <form action="/customer_details" method="GET">
+      <div class="form-group">
+        <label for="cust_id">Customer ID:</label>
+        <input type="text" class="form-control" id="cust_id" name="cust_id" required>
+      </div>
+      <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+  </div>
+</body>
+</html>

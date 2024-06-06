@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>View Employee</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="viewprod_styles.css">
+</head>
+
+<body>
+  <h1>View Employee</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Employee name</th>
+        <th>Employee Address</th>
+        <th>Employee Date join</th>
+        <th>Employee Gender</th>
+        <th>Employee Salary</th>
+        <th>Employee DOB</th>
+
+        <th>Employee PHONE</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <% employees.forEach((employee) => { %>
+        <tr>
+          <td><%= employee.emp_id %></td>
+          <td><%= employee.emp_name %></td>
+          <td><%= employee.emp_address %></td>
+          <td><%= employee.emp_datejoin %></td>
+          <td><%= employee.emp_gender %></td>
+          <td><%= employee.emp_salary %></td>
+          <td><%= employee.emp_dob %></td>
+
+          <td><%= employee.emp_phone %></td>
+        </tr>
+      <% }); %>
+    </tbody>
+  </table>
+</body>
+</html>

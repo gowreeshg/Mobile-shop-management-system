@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>View Products</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="viewprod_styles.css">
+</head>
+
+<body>
+  <h1>View Purchase</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Purchase ID</th>
+  <th>product ID</th>
+        <th>Brand name</th>
+        <th>Product Name</th>
+        <th>Product Category</th>
+        <th>Product variant</th>
+        <th>purchase_price</th>
+        <th>purchase Quantity</th>
+        <th>purchase_date</th>
+        <th>product_mrp</th>
+        <th>total_purchase_price</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <% purchase.forEach((purchase) => { %>
+        <tr>
+          <td><%= purchase.purchase_id %></td>
+          <td><%= purchase.prod_id %></td>
+          <td><%= purchase.brand_name %></td>
+          <td><%= purchase.prod_name %></td>
+          <td><%= purchase.prod_cat %></td>
+          <td><%= purchase.prod_variant %></td>
+          <td><%= purchase.purchase_price %></td>
+          <td><%= purchase.purchase_quantity %></td>
+          <td><%= purchase.purchase_date %></td>
+          <td><%= purchase.product_mrp %></td>
+          <td><%= purchase.total_purchase_price %></td>
+        </tr>
+      <% }); %>
+    </tbody>
+  </table>
+</body>
+</html>

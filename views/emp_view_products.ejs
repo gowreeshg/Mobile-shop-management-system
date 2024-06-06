@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>View Products</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="viewprod_styles.css">
+</head>
+
+<body>
+  <h1>View Products</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+          <th>Brand name</th>
+        <th>Product Name</th>
+        <th>Product Category</th>
+        <th>Price</th>
+        <th>Quantity</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% products.forEach((product) => { %>
+        <tr>
+          <td><%= product.prod_id %></td>
+          <td><%= product.brand_name %></td>
+          <td><%= product.prod_name %></td>
+          <td><%= product.prod_cat %></td>
+          <td><%= product.mrp %></td>
+          <td><%= product.prod_quantity %></td>
+        </tr>
+      <% }); %>
+    </tbody>
+  </table>
+</body>
+</html>

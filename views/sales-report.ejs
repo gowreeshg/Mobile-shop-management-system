@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Sales Report Generator</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+</head>
+<body>
+  <div class="container mt-5">
+    <h1>Sales Report Generator</h1>
+    <form action="/generate-report" method="post">
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="fromDate">From Date:</label>
+          <input type="date" class="form-control" id="fromDate" name="fromDate" required>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="toDate">To Date:</label>
+          <input type="date" class="form-control" id="toDate" name="toDate" required>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary">Generate Report</button>
+    </form>
+
+    <% if (reportData) { %>
+      <div class="mt-5">
+        <h2>Summary</h2>
+        <h4>Total Units Sold: <%= totalUnitsSold %></h4>
+        <h4>Total Revenue: <%= totalRevenue %></h4>
+        <h4>Most Sold Item:</h4>
+        <span>
+          Product ID: <%= mostSoldItem.prod_id %><br>
+          Brand Name: <%= mostSoldItem.brand_name %><br>
+          Product Name: <%= mostSoldItem.prod_name %><br>
+        </span>
+      </div>
+
+      <h2 class="mt-4">Sales Report</h2>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Sale ID</th>
+            <th>Sale Date</th>
+            <th>Customer ID</th>
+            <th>Product ID</th>
+            <th>Brand Name</th>
+            <th>Product Name</th>
+            <th>Product Variant</th>
+            <th>Sale Quantity</th>
+            <th>MRP</th>
+            <th>Total Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% reportData.forEach((item) => { %>
+            <tr>
+              <td><%= item.sale_id %></td>
+              <td><%= item.sale_date %></td>
+              <td><%= item.cust_id %></td>
+              <td><%= item.prod_id %></td>
+              <td><%= item.brand_name %></td>
+              <td><%= item.prod_name %></td>
+              <td><%= item.prod_variant %></td>
+              <td><%= item.sale_quantity %></td>
+              <td><%= item.mrp %></td>
+              <td><%= item.total_price %></td>
+            </tr>
+          <% }); %>
+        </tbody>
+      </table>
+    <% } %>
+  </div>
+</body>
+</html>

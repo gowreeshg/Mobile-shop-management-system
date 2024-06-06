@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>View Sales</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="viewprod_styles.css">
+</head>
+
+<body>
+  <h1>View Sales</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Brand name</th>
+        <th>Product Name</th>
+        <th>Product Variant</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Total</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <% sales.forEach((sale) => { %>
+        <tr>
+          <td><%= sale.sale_id %></td>
+          <td><%= sale.brand_name %></td>
+          <td><%= sale.prod_name %></td>
+          <td><%= sale.prod_variant %></td>
+          <td><%= sale.mrp %></td>
+          <td><%= sale.sale_quantity %></td>
+          <td><%= sale.total_price %></td>
+        </tr>
+      <% }); %>
+    </tbody>
+  </table>
+</body>
+</html>

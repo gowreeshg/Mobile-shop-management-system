@@ -1,0 +1,58 @@
+<!-- customer_search.ejs -->
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Search Customer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+  <div class="container mt-4">
+    <h1 class="text-center mb-4">Search Purchase</h1>
+    <form action="/search-purchase" method="post">
+      <div class="form-group">
+        <label for="searchType">Search by:</label>
+        <select name="searchType" class="form-control">
+          <option value="purchase_id">Purchase ID</option>
+          <option value="prod_name_brand">Product Name and Brand</option>
+        </select>
+      </div>
+      <div id="purchaseIdDiv" class="form-group">
+        <label for="purchaseId">Purchase ID:</label>
+        <input type="text" name="purchase_id" id="purchaseId" class="form-control">
+      </div>
+      <div id="prodBrandDiv" style="display: none;">
+        <div class="form-group">
+          <label for="productName">Product Name:</label>
+          <input type="text" name="prod_name" id="productName" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="brandName">Brand Name:</label>
+          <input type="text" name="brand_name" id="brandName" class="form-control">
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+
+    <script>
+      const searchTypeSelect = document.querySelector('[name="searchType"]');
+      const purchaseIdDiv = document.getElementById('purchaseIdDiv');
+      const prodBrandDiv = document.getElementById('prodBrandDiv');
+
+      searchTypeSelect.addEventListener('change', () => {
+        if (searchTypeSelect.value === 'purchase_id') {
+          purchaseIdDiv.style.display = 'block';
+          prodBrandDiv.style.display = 'none';
+        } else if (searchTypeSelect.value === 'prod_name_brand') {
+          purchaseIdDiv.style.display = 'none';
+          prodBrandDiv.style.display = 'block';
+        }
+      });
+    </script>
+
+    <a href="/admin_dash" class="btn btn-primary" style="margin-top:2%">Admin dashboard</a>
+
+
+</body>
+</html>

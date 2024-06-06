@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Search Sales</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+  <style>
+    /* Additional custom styles */
+    body {
+      font-family: Arial, sans-serif;
+    }
+    .container {
+      margin-top: 50px;
+    }
+  </style>
+
+</head>
+<body>
+  <div class="container">
+    <h1 class="text-center mb-4">Search Sales</h1>
+    <form action="/search-sale" method="post" class="mb-4">
+      <div class="form-group">
+        <label for="searchOption">Search Option:</label>
+        <select class="form-control" id="searchOption" name="search_option">
+          <option value="sale_id">Sale ID</option>
+          <option value="brand_name_prod_name">Brand and Product Name</option>
+        </select>
+      </div>
+      <div class="form-group" id="saleIdGroup">
+        <label for="saleId">Sale ID:</label>
+        <input type="text" name="sale_id" id="saleId" class="form-control">
+      </div>
+      <div class="form-group" id="brandProdGroup" style="display: none;">
+        <label for="brandName">Brand Name:</label>
+        <input type="text" name="brand_name" id="brandName" class="form-control">
+        <label for="productName">Product Name:</label>
+        <input type="text" name="prod_name" id="productName" class="form-control">
+      </div>
+      <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+
+    <script>
+      document.getElementById('searchOption').addEventListener('change', function() {
+        const selectedOption = this.value;
+        const saleIdGroup = document.getElementById('saleIdGroup');
+        const brandProdGroup = document.getElementById('brandProdGroup');
+
+        if (selectedOption === 'sale_id') {
+          saleIdGroup.style.display = 'block';
+          brandProdGroup.style.display = 'none';
+        } else if (selectedOption === 'brand_name_prod_name') {
+          saleIdGroup.style.display = 'none';
+          brandProdGroup.style.display = 'block';
+        }
+      });
+
+      function showUpdateForm(saleId) {
+        window.location.href = `/update-sale/${saleId}`;
+      }
+    </script>
+  </div>
+</body>
+</html>
